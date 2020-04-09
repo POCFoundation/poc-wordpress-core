@@ -21,6 +21,7 @@ class POC
     private function define_constants()
     {
         $this->define( 'POC_ABSPATH', dirname( POC_PLUGIN_FILE ) . '/' );
+        $this->define( 'POC_PLUGIN_URL', untrailingslashit( plugins_url( '/', POC_PLUGIN_FILE ) ) );
     }
 
     private function includes()
@@ -104,7 +105,7 @@ class POC
 
     public function enqueue_scripts()
     {
-        wp_enqueue_script( 'poc_tracking', POC_ABSPATH . 'assets/js/tracking.js'  );
+        wp_enqueue_script( 'poc_tracking', POC_PLUGIN_URL . '/assets/js/tracking.js'  );
     }
 
     private function define($name, $value) {
