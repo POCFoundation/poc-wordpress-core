@@ -32,6 +32,7 @@ class POC
     {
         add_action( 'plugins_loaded', array( $this, 'on_plugins_loaded' ) );
         add_action( 'admin_init', array( $this, 'on_admin_init' ) );
+        add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
     }
 
     public function on_plugins_loaded()
@@ -99,6 +100,11 @@ class POC
                 exit;
             }
         }
+    }
+
+    public function enqueue_scripts()
+    {
+        wp_enqueue_script( 'poc_tracking', POC_ABSPATH . 'assets/js/tracking.js'  );
     }
 
     private function define($name, $value) {
